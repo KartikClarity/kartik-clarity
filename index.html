@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kartik Clarity™</title>
+  <title>Kartik Clarity™ | AI Revenue OS</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -16,18 +16,18 @@
   </style>
 </head>
 
-<body class="p-10">
+<body class="p-10 max-w-3xl mx-auto">
 
   <!-- HEADER -->
-  <h1 class="text-3xl font-bold">Kartik Clarity™</h1>
+  <h1 class="text-4xl font-bold">Kartik Clarity™</h1>
   <p class="text-gray-400 mt-2">
     AI Revenue Intelligence OS for founders.
   </p>
 
-  <!-- CARD -->
-  <div class="mt-8 bg-[#111118] p-6 rounded-xl border border-white/10 max-w-md">
+  <!-- MAIN CARD -->
+  <div class="mt-8 bg-[#111118] p-6 rounded-xl border border-white/10">
 
-    <h2 class="text-lg font-semibold mb-4">Revenue Leak Scan</h2>
+    <h2 class="text-lg font-semibold mb-4">Revenue Leak AI Scan v1</h2>
 
     <input
       id="email"
@@ -40,20 +40,49 @@
       onclick="runScan()"
       class="mt-4 w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded"
     >
-      Run Scan
+      Run AI Revenue Scan
     </button>
 
-    <pre id="result" class="mt-4 text-green-400 text-sm"></pre>
+    <pre id="result" class="mt-4 text-green-400 text-sm whitespace-pre-wrap"></pre>
 
   </div>
 
 <script>
+
 /* =========================
-   SUPABASE CONFIG
+   CONFIG (YOU ONLY EDIT THIS)
 ========================= */
 
 const SUPABASE_URL = "https://bigovtsoqrcbmuqpetaj.supabase.co";
 const SUPABASE_KEY = "PASTE_YOUR_ANON_KEY_HERE";
+
+/* =========================
+   AI ENGINE (v1 MOCK → READY FOR GPT UPGRADE)
+========================= */
+
+function generateAIInsight(email) {
+
+  // AI LOGIC PLACEHOLDER (we will upgrade to real GPT later)
+  const leaks = [
+    {
+      leak: "Leads not followed up within 24 hours",
+      impact: "$8,000 - $15,000/month loss",
+      fix: "Automate follow-ups using CRM + AI reminders"
+    },
+    {
+      leak: "Outbound messages not personalized",
+      impact: "$5,000/month lost conversions",
+      fix: "Use AI-generated personalized outreach"
+    },
+    {
+      leak: "No retargeting system active",
+      impact: "$10,000/month missed revenue",
+      fix: "Install automated retargeting funnel"
+    }
+  ];
+
+  return leaks[Math.floor(Math.random() * leaks.length)];
+}
 
 /* =========================
    MAIN FUNCTION
@@ -62,21 +91,19 @@ const SUPABASE_KEY = "PASTE_YOUR_ANON_KEY_HERE";
 async function runScan() {
 
   const email = document.getElementById("email").value;
+  const resultBox = document.getElementById("result");
 
   if (!email) {
-    alert("Enter email first");
+    resultBox.innerText = "⚠️ Enter email first";
     return;
   }
 
-  const fakeAIResult = {
-    leak: "Follow-up delay in sales pipeline",
-    impact: "$12,000/month revenue loss",
-    fix: "Automate follow-ups within 24 hours"
-  };
+  resultBox.innerText = "🧠 Running AI Revenue Scan...";
 
-  const res = await fetch(
-    SUPABASE_URL + "/rest/v1/scans",
-    {
+  const ai = generateAIInsight(email);
+
+  try {
+    const res = await fetch(SUPABASE_URL + "/rest/v1/scans", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -86,24 +113,29 @@ async function runScan() {
       },
       body: JSON.stringify({
         email: email,
-        leak: fakeAIResult.leak,
-        impact: fakeAIResult.impact,
-        fix: fakeAIResult.fix
+        leak: ai.leak,
+        impact: ai.impact,
+        fix: ai.fix
       })
+    });
+
+    if (!res.ok) {
+      const err = await res.text();
+      resultBox.innerText = "❌ Supabase Error:\n" + err;
+      return;
     }
-  );
 
-  if (res.ok) {
-    document.getElementById("result").innerText =
-      "Leak: " + fakeAIResult.leak + "\n" +
-      "Impact: " + fakeAIResult.impact + "\n" +
-      "Fix: " + fakeAIResult.fix;
+    resultBox.innerText =
+      "✅ AI SCAN COMPLETE\n\n" +
+      "Leak: " + ai.leak + "\n\n" +
+      "Impact: " + ai.impact + "\n\n" +
+      "Fix: " + ai.fix + "\n";
 
-  } else {
-    document.getElementById("result").innerText =
-      "Error saving scan. Check Supabase settings.";
+  } catch (err) {
+    resultBox.innerText = "❌ Network Error: " + err.message;
   }
 }
+
 </script>
 
 </body>
