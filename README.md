@@ -1,185 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Founder Revenue Platform™</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kartik Clarity™ | AI Revenue Intelligence OS</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-:root{
-  --bg:#070A12;
-  --panel:rgba(255,255,255,0.04);
-  --stroke:rgba(255,255,255,0.08);
-  --text:#EAF0FF;
-  --muted:rgba(234,240,255,0.6);
-  --accent:#7C5CFF;
-  --accent2:#00E5A8;
-}
-
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter;}
-
 body{
-  background:
-    radial-gradient(1200px 600px at 20% 0%, rgba(124,92,255,0.25), transparent),
-    radial-gradient(900px 500px at 80% 10%, rgba(0,229,168,0.12), transparent),
-    var(--bg);
-  color:var(--text);
-  padding:40px;
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#05070D;
+  color:#EAF0FF;
 }
 
 .container{
   max-width:1100px;
   margin:auto;
-}
-
-/* TOP NAV */
-.nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:30px;
-}
-
-.logo{
-  font-weight:700;
-  letter-spacing:-0.5px;
-}
-
-.pill{
-  padding:6px 12px;
-  border:1px solid var(--stroke);
-  border-radius:999px;
-  color:var(--muted);
-  font-size:12px;
-}
-
-/* HERO */
-.hero{
-  padding:60px;
-  border:1px solid var(--stroke);
-  border-radius:24px;
-  background:linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-  backdrop-filter: blur(20px);
-  position:relative;
-  overflow:hidden;
-}
-
-.hero:before{
-  content:"";
-  position:absolute;
-  width:600px;height:600px;
-  background:radial-gradient(circle, rgba(124,92,255,0.25), transparent 60%);
-  top:-200px;right:-200px;
+  padding:50px 20px;
 }
 
 h1{
-  font-size:44px;
-  letter-spacing:-1.5px;
-  line-height:1.1;
+  font-size:42px;
+  margin-bottom:10px;
 }
 
-.sub{
-  margin-top:14px;
-  color:var(--muted);
-  max-width:600px;
+h2{
+  margin-top:50px;
+  font-size:28px;
+}
+
+p{
+  color:rgba(234,240,255,0.75);
   line-height:1.6;
 }
 
-.cta{
-  margin-top:26px;
-  display:flex;
-  gap:12px;
+.card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:20px;
+  border-radius:12px;
+  margin-top:15px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
 }
 
 button{
-  padding:12px 16px;
-  border-radius:12px;
+  padding:12px 18px;
   border:none;
-  cursor:pointer;
-  font-weight:600;
-}
-
-.primary{
-  background:var(--accent);
+  border-radius:8px;
+  background:#6C5CE7;
   color:white;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:15px;
 }
 
-.secondary{
-  background:transparent;
-  border:1px solid var(--stroke);
-  color:var(--text);
+.badge{
+  display:inline-block;
+  padding:5px 10px;
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:999px;
+  font-size:12px;
+  color:rgba(255,255,255,0.7);
+  margin-bottom:20px;
 }
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-  margin-top:28px;
-}
-
-.card{
-  padding:18px;
-  border-radius:18px;
-  background:var(--panel);
-  border:1px solid var(--stroke);
-  transition:0.25s ease;
-}
-
-.card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(124,92,255,0.5);
-}
-
-.value{
-  font-size:28px;
-  font-weight:700;
-  letter-spacing:-1px;
-}
-
-.label{
-  color:var(--muted);
-  margin-top:6px;
-  font-size:13px;
-}
-
-/* LOWER SECTION */
-.section{
-  margin-top:35px;
-}
-
-.title{
-  font-size:14px;
-  letter-spacing:1px;
-  color:var(--muted);
-  margin-bottom:12px;
-}
-
-.list{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-.item{
-  padding:14px;
-  border-radius:14px;
-  background:rgba(255,255,255,0.03);
-  border:1px solid var(--stroke);
-  font-size:14px;
-  line-height:1.4;
-}
-
-.bad{
-  border-left:3px solid #ff4d4d;
-}
-
-.good{
-  border-left:3px solid var(--accent2);
-}
-
 </style>
 </head>
 
@@ -187,65 +75,111 @@ button{
 
 <div class="container">
 
-  <div class="nav">
-    <div class="logo">Founder Revenue Platform™</div>
-    <div class="pill">System Status: Active</div>
+  <!-- HEADER -->
+  <div class="badge">AI Revenue Intelligence OS • Founder System</div>
+
+  <h1>Kartik Clarity™</h1>
+
+  <p>
+    I build AI-powered revenue systems that detect hidden leakage in sales pipelines,
+    outbound systems, and conversion flows — and turn them into measurable growth actions.
+  </p>
+
+  <button>Request Revenue Leak Scan</button>
+
+  <!-- PROBLEM -->
+  <h2>Problem</h2>
+  <p>
+    Most companies lose revenue silently. CRMs show data, not risk. Dashboards show metrics, not causes.
+    Founders only realize revenue loss after it happens.
+  </p>
+
+  <!-- SOLUTION -->
+  <h2>Solution</h2>
+  <p>
+    We built an AI Revenue Intelligence OS that continuously detects where revenue is leaking,
+    why it is happening, and what to fix — in real time.
+  </p>
+
+  <!-- PRODUCTS -->
+  <h2>What I Build</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>AI Revenue Intelligence System</h3>
+      <p>Detects revenue leaks across CRM, outbound, and pipeline systems using AI reasoning.</p>
+    </div>
+
+    <div class="card">
+      <h3>Multi-Agent Revenue OS</h3>
+      <p>AI agents simulate a full revenue team: acquisition, conversion, retention, pricing.</p>
+    </div>
+
+    <div class="card">
+      <h3>Revenue Leak Detection Engine</h3>
+      <p>Finds exactly where money is being lost and quantifies impact.</p>
+    </div>
+
+    <div class="card">
+      <h3>Founder Revenue Dashboard</h3>
+      <p>Live system showing revenue risk, impact scores, and priority fixes.</p>
+    </div>
+
+    <div class="card">
+      <h3>Outbound Optimization System</h3>
+      <p>Improves cold outreach, ICP targeting, and reply rates using AI analysis.</p>
+    </div>
+
+    <div class="card">
+      <h3>Autonomous AI Revenue Agent</h3>
+      <p>Continuously scans and improves revenue systems without manual input.</p>
+    </div>
+
   </div>
 
-  <div class="hero">
+  <!-- HOW IT WORKS -->
+  <h2>How It Works</h2>
 
-    <h1>Detect Revenue Leakage Before It Becomes Loss.</h1>
-
-    <div class="sub">
-      A precision-built system that identifies hidden funnel inefficiencies,
-      outbound decay, and conversion leaks — then converts them into recovery actions.
-    </div>
-
-    <div class="cta">
-      <button class="primary">Run Full Audit</button>
-      <button class="secondary">View System Map</button>
-    </div>
-
-    <div class="grid">
-
-      <div class="card">
-        <div class="value">$236K</div>
-        <div class="label">Revenue at Risk</div>
-      </div>
-
-      <div class="card">
-        <div class="value">5</div>
-        <div class="label">Active Leak Vectors</div>
-      </div>
-
-      <div class="card">
-        <div class="value">24m</div>
-        <div class="label">Recovery Time</div>
-      </div>
-
-    </div>
-
+  <div class="card">
+    <p>
+      1. Connect your CRM or upload data<br>
+      2. AI scans pipeline behavior<br>
+      3. Detects revenue leaks<br>
+      4. Assigns financial impact<br>
+      5. Suggests exact fixes<br>
+      6. Continuously monitors system
+    </p>
   </div>
 
-  <div class="section">
-    <div class="title">CRITICAL SYSTEM INSIGHTS</div>
+  <!-- POSITIONING -->
+  <h2>Positioning</h2>
 
-    <div class="list">
+  <p>
+    We are building the Revenue Intelligence Layer for modern companies —
+    replacing manual analysis with autonomous AI systems that continuously optimize revenue.
+  </p>
 
-      <div class="item bad">
-        CRM follow-up decay detected → leads not re-engaged after 48h window
-      </div>
+  <!-- CTA -->
+  <h2>Get Started</h2>
 
-      <div class="item bad">
-        Outbound message variance too high → inconsistent response rate across segments
-      </div>
+  <div class="card">
+    <p>
+      Want to see where your business is losing revenue?
+      Get an AI-generated revenue leak analysis.
+    </p>
 
-      <div class="item good">
-        Pricing structure stable → no immediate monetization leakage detected
-      </div>
+    <button>Run Free Revenue Scan</button>
+  </div>
 
-    </div>
+  <!-- FOOTER -->
+  <h2>Founder</h2>
 
+  <div class="card">
+    <p>
+      Kartik Clarity™ is building the next generation of AI revenue systems for founders, agencies,
+      and SaaS companies to eliminate hidden revenue loss and optimize growth automatically.
+    </p>
   </div>
 
 </div>
