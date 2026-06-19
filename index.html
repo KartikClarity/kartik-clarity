@@ -3,137 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kartik Clarity™ | AI Revenue OS</title>
+  <title>Kartik Clarity™</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
     body {
-      background: #0A0A0F;
-      color: #E8E8F0;
-      font-family: Arial, sans-serif;
+      background:#0A0A0F;
+      color:#E8E8F0;
+      font-family: Arial;
     }
   </style>
 </head>
 
-<body class="p-10 max-w-3xl mx-auto">
+<body class="p-10">
 
-  <!-- HEADER -->
-  <h1 class="text-4xl font-bold">Kartik Clarity™</h1>
-  <p class="text-gray-400 mt-2">
-    AI Revenue Intelligence OS for founders.
-  </p>
+  <h1 class="text-3xl font-bold">Kartik Clarity™</h1>
+  <p class="text-gray-400 mt-2">AI Revenue Intelligence OS for founders.</p>
 
-  <!-- MAIN CARD -->
-  <div class="mt-8 bg-[#111118] p-6 rounded-xl border border-white/10">
+  <div class="mt-6 bg-[#111118] p-6 rounded-xl border border-white/10 max-w-md">
 
-    <h2 class="text-lg font-semibold mb-4">Revenue Leak AI Scan v1</h2>
+    <h2 class="font-semibold mb-3">Revenue Leak Scan</h2>
 
-    <input
-      id="email"
-      type="email"
+    <input id="email"
+      class="w-full p-3 rounded bg-black border border-white/10"
       placeholder="Enter email"
-      class="w-full p-3 rounded bg-black border border-white/10 text-white"
     />
 
-    <button
-      onclick="runScan()"
-      class="mt-4 w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded"
-    >
-      Run AI Revenue Scan
+    <button onclick="runScan()"
+      class="mt-4 w-full bg-purple-600 hover:bg-purple-700 py-2 rounded">
+      Run Scan
     </button>
 
-    <pre id="result" class="mt-4 text-green-400 text-sm whitespace-pre-wrap"></pre>
+    <pre id="result" class="mt-4 text-green-400 text-sm"></pre>
 
   </div>
 
 <script>
 
-/* =========================
-   CONFIG (YOU ONLY EDIT THIS)
-========================= */
-
 const SUPABASE_URL = "https://bigovtsoqrcbmuqpetaj.supabase.co";
 const SUPABASE_KEY = "PASTE_YOUR_ANON_KEY_HERE";
 
-/* =========================
-   AI ENGINE (v1 MOCK → READY FOR GPT UPGRADE)
-========================= */
-
-function generateAIInsight(email) {
-
-  // AI LOGIC PLACEHOLDER (we will upgrade to real GPT later)
-  const leaks = [
-    {
-      leak: "Leads not followed up within 24 hours",
-      impact: "$8,000 - $15,000/month loss",
-      fix: "Automate follow-ups using CRM + AI reminders"
-    },
-    {
-      leak: "Outbound messages not personalized",
-      impact: "$5,000/month lost conversions",
-      fix: "Use AI-generated personalized outreach"
-    },
-    {
-      leak: "No retargeting system active",
-      impact: "$10,000/month missed revenue",
-      fix: "Install automated retargeting funnel"
-    }
-  ];
-
-  return leaks[Math.floor(Math.random() * leaks.length)];
+function generateAI() {
+  return {
+    leak: "Follow-up delay in pipeline",
+    impact: "$10,000/month loss",
+    fix: "Automate follow-ups within 24h"
+  };
 }
-
-/* =========================
-   MAIN FUNCTION
-========================= */
 
 async function runScan() {
 
   const email = document.getElementById("email").value;
-  const resultBox = document.getElementById("result");
+  const result = document.getElementById("result");
 
   if (!email) {
-    resultBox.innerText = "⚠️ Enter email first";
+    result.innerText = "Enter email first";
     return;
   }
 
-  resultBox.innerText = "🧠 Running AI Revenue Scan...";
+  result.innerText = "Running scan...";
 
-  const ai = generateAIInsight(email);
+  const ai = generateAI();
 
-  try {
-    const res = await fetch(SUPABASE_URL + "/rest/v1/scans", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "apikey": SUPABASE_KEY,
-        "Authorization": "Bearer " + SUPABASE_KEY,
-        "Prefer": "return=minimal"
-      },
-      body: JSON.stringify({
-        email: email,
-        leak: ai.leak,
-        impact: ai.impact,
-        fix: ai.fix
-      })
-    });
+  const res = await fetch(SUPABASE_URL + "/rest/v1/scans", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": SUPABASE_KEY,
+      "Authorization": "Bearer " + SUPABASE_KEY
+    },
+    body: JSON.stringify({
+      email,
+      leak: ai.leak,
+      impact: ai.impact,
+      fix: ai.fix
+    })
+  });
 
-    if (!res.ok) {
-      const err = await res.text();
-      resultBox.innerText = "❌ Supabase Error:\n" + err;
-      return;
-    }
-
-    resultBox.innerText =
-      "✅ AI SCAN COMPLETE\n\n" +
-      "Leak: " + ai.leak + "\n\n" +
-      "Impact: " + ai.impact + "\n\n" +
-      "Fix: " + ai.fix + "\n";
-
-  } catch (err) {
-    resultBox.innerText = "❌ Network Error: " + err.message;
+  if (!res.ok) {
+    result.innerText = "Error saving to Supabase";
+    return;
   }
+
+  result.innerText =
+    "Leak: " + ai.leak + "\n" +
+    "Impact: " + ai.impact + "\n" +
+    "Fix: " + ai.fix;
 }
 
 </script>
