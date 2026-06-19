@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Founder Revenue Platform™</title>
+  <title>Kartik Clarity™</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
     body {
-      background:#0A0A0F;
-      color:#E8E8F0;
+      background: #0A0A0F;
+      color: #E8E8F0;
       font-family: Arial, sans-serif;
     }
   </style>
@@ -18,60 +18,91 @@
 
 <body class="p-10">
 
-  <h1 style="font-size:32px;font-weight:bold">
-    Kartik Clarity™
-  </h1>
-
-  <p style="margin-top:10px;color:#aaa">
+  <!-- HEADER -->
+  <h1 class="text-3xl font-bold">Kartik Clarity™</h1>
+  <p class="text-gray-400 mt-2">
     AI Revenue Intelligence OS for founders.
   </p>
 
-  <div style="margin-top:30px;background:#111;padding:20px;border-radius:10px">
-    <h2>Revenue Leak Scan</h2>
+  <!-- CARD -->
+  <div class="mt-8 bg-[#111118] p-6 rounded-xl border border-white/10 max-w-md">
 
-    <input id="email" placeholder="Enter email"
-      style="padding:10px;margin-top:10px;width:250px"/>
+    <h2 class="text-lg font-semibold mb-4">Revenue Leak Scan</h2>
 
-    <br><br>
+    <input
+      id="email"
+      type="email"
+      placeholder="Enter email"
+      class="w-full p-3 rounded bg-black border border-white/10 text-white"
+    />
 
-    <button onclick="runScan()"
-      style="padding:10px 20px;background:#6c5ce7;color:white;border:none;border-radius:6px">
+    <button
+      onclick="runScan()"
+      class="mt-4 w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded"
+    >
       Run Scan
     </button>
 
-    <pre id="result" style="margin-top:20px;color:#00ff99"></pre>
+    <pre id="result" class="mt-4 text-green-400 text-sm"></pre>
+
   </div>
 
 <script>
+/* =========================
+   SUPABASE CONFIG
+========================= */
+
 const SUPABASE_URL = "https://bigovtsoqrcbmuqpetaj.supabase.co";
-const SUPABASE_KEY = "YOUR_ANON_KEY_HERE";
+const SUPABASE_KEY = "PASTE_YOUR_ANON_KEY_HERE";
+
+/* =========================
+   MAIN FUNCTION
+========================= */
 
 async function runScan() {
+
   const email = document.getElementById("email").value;
 
-  const data = {
-    leak: "Follow-up delay in pipeline",
-    impact: "$12,000/month loss",
+  if (!email) {
+    alert("Enter email first");
+    return;
+  }
+
+  const fakeAIResult = {
+    leak: "Follow-up delay in sales pipeline",
+    impact: "$12,000/month revenue loss",
     fix: "Automate follow-ups within 24 hours"
   };
 
-  await fetch(SUPABASE_URL + "/rest/v1/scans", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "apikey": SUPABASE_KEY,
-      "Authorization": "Bearer " + SUPABASE_KEY
-    },
-    body: JSON.stringify({
-      email,
-      leak: data.leak,
-      impact: data.impact,
-      fix: data.fix
-    })
-  });
+  const res = await fetch(
+    SUPABASE_URL + "/rest/v1/scans",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_KEY,
+        "Authorization": "Bearer " + SUPABASE_KEY,
+        "Prefer": "return=minimal"
+      },
+      body: JSON.stringify({
+        email: email,
+        leak: fakeAIResult.leak,
+        impact: fakeAIResult.impact,
+        fix: fakeAIResult.fix
+      })
+    }
+  );
 
-  document.getElementById("result").innerText =
-    `Leak: ${data.leak}\nImpact: ${data.impact}\nFix: ${data.fix}`;
+  if (res.ok) {
+    document.getElementById("result").innerText =
+      "Leak: " + fakeAIResult.leak + "\n" +
+      "Impact: " + fakeAIResult.impact + "\n" +
+      "Fix: " + fakeAIResult.fix;
+
+  } else {
+    document.getElementById("result").innerText =
+      "Error saving scan. Check Supabase settings.";
+  }
 }
 </script>
 
