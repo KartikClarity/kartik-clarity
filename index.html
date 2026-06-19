@@ -1,200 +1,29 @@
-<!DOCTYPE html>
-<html lang="en" class="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Founder Revenue Platform™</title>
-  <script src="https://tailwindcss.com"></script>
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: {
-              DEFAULT: '#FF4D4D',
-              hover: '#FF3333',
-              light: '#FF6B6B',
-            },
-            success: {
-              DEFAULT: '#00E5A0',
-              hover: '#00CC8E',
-            },
-            canvas: {
-              dark: '#0A0A0F',
-            },
-            surface: {
-              DEFAULT: '#111118',
-              hover: '#1A1A24',
-            },
-            text: {
-              DEFAULT: '#E8E8F0',
-              muted: '#8B8BA7',
-            },
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
-  <style>
-    body {
-      background-color: #0A0A0F;
-      color: #E8E8F0;
-    }
-    .custom-scrollbar::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-track {
-      background: #111118;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: rgba(139, 139, 167, 0.2);
-      border-radius: 9999px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-      background: rgba(139, 139, 167, 0.3);
-    }
-  </style>
-</head>
-<body class="font-sans antialiased min-h-screen flex flex-col">
+FRP
+Founder Revenue Platform™
+Dashboard Revenue Audit Outbound Engine Pricing Optimization
+Run New Audit
+Main Engine
 
-  <!-- Header -->
-  <header class="border-b border-white/5 bg-surface/80 backdrop-blur sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <div class="bg-primary text-canvas-dark font-bold text-xs p-2 rounded-lg tracking-wider">FRP</div>
-      <span class="font-bold tracking-tight text-lg text-white">Founder Revenue Platform<span class="text-primary">™</span></span>
-    </div>
-    <div class="flex items-center gap-6 text-sm">
-      <a href="#dashboard" class="text-text hover:text-white transition font-medium">Dashboard</a>
-      <a href="#audit" class="text-text-muted hover:text-white transition">Revenue Audit</a>
-      <a href="#outbound" class="text-text-muted hover:text-white transition">Outbound Engine</a>
-      <a href="#pricing" class="text-text-muted hover:text-white transition">Pricing Optimization</a>
-    </div>
-    <div>
-      <button class="bg-primary hover:bg-primary-hover text-white text-xs font-semibold px-4 py-2 rounded-md transition tracking-wide shadow-lg shadow-primary/20">
-        Run New Audit
-      </button>
-    </div>
-  </header>
+ Overview  Leak Diagnosis  Outbound Playbooks
+System Health
 
-  <!-- Shell Layout -->
-  <div class="flex-1 flex overflow-hidden">
-    
-    <!-- Sidebar -->
-    <aside class="w-64 border-r border-white/5 bg-surface/40 p-6 space-y-8 hidden md:block">
-      <div class="space-y-2">
-        <p class="text-[10px] uppercase tracking-widest text-text-muted font-bold px-3">Main Engine</p>
-        <nav class="space-y-1">
-          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-surface text-white text-sm font-medium border-l-2 border-primary">
-            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z"></path></svg>
-            Overview
-          </a>
-          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-muted hover:text-white hover:bg-surface/50 text-sm transition">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-            Leak Diagnosis
-          </a>
-          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-muted hover:text-white hover:bg-surface/50 text-sm transition">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-            Outbound Playbooks
-          </a>
-        </nav>
-      </div>
+Leaks Patched 3 / 5
+Fix 2 more system leaks to reach optimized revenue baseline.
+Live System Audit Pipeline: Scanning CRM Operations...
+ARR LOST: $236,000
+QUICK WINS: 2 AVAILABLE
+Estimated Leakage High Risk
+$236,000
+Annual recurring revenue slipping unmonitored
 
-      <div class="space-y-2">
-        <p class="text-[10px] uppercase tracking-widest text-text-muted font-bold px-3">System Health</p>
-        <div class="bg-surface/60 border border-white/5 rounded-xl p-4 space-y-3">
-          <div>
-            <div class="flex justify-between text-xs mb-1">
-              <span class="text-text-muted">Leaks Patched</span>
-              <span class="text-success font-medium">3 / 5</span>
-            </div>
-            <div class="w-full bg-canvas-dark h-1.5 rounded-full overflow-hidden">
-              <div class="bg-success h-full w-[60%]"></div>
-            </div>
-          </div>
-          <div class="text-[11px] text-text-muted leading-relaxed">
-            Fix <span class="text-white font-medium">2 more system leaks</span> to reach optimized revenue baseline.
-          </div>
-        </div>
-      </div>
-    </aside>
+Identified Open Leaks Action Needed
+5 Faults
+Structural holes found across the pipeline
 
-    <!-- Main Workspace -->
-    <main class="flex-1 p-6 lg:p-8 space-y-8 overflow-y-auto custom-scrollbar">
-      
-      <!-- Live Metrics Ticker Bar -->
-      <div class="bg-gradient-to-r from-primary/10 via-canvas-dark to-success/10 border border-white/5 rounded-xl p-4 flex flex-wrap items-center justify-between gap-4">
-        <div class="flex items-center gap-2 text-xs">
-          <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-          <span class="text-text-muted font-medium uppercase tracking-wider">Live System Audit Pipeline:</span>
-          <span class="text-white font-semibold">Scanning CRM Operations...</span>
-        </div>
-        <div class="flex items-center gap-6 text-xs font-mono">
-          <div><span class="text-text-muted">ARR LOST:</span> <span class="text-primary font-bold">$236,000</span></div>
-          <div><span class="text-text-muted">QUICK WINS:</span> <span class="text-success font-bold">2 AVAILABLE</span></div>
-        </div>
-      </div>
+Engineering Capacity Efficient
+24 Mins
+Total execution work required to patch system
 
-      <!-- Grid Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- Card 1 -->
-        <div class="bg-surface border border-white/5 rounded-xl p-6 space-y-4">
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-text-muted font-medium uppercase tracking-wider">Estimated Leakage</span>
-            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/10 text-primary uppercase tracking-wide">High Risk</span>
-          </div>
-          <div class="space-y-1">
-            <h3 class="text-3xl font-bold tracking-tight text-white">$236,000</h3>
-            <p class="text-xs text-text-muted">Annual recurring revenue slipping unmonitored</p>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="bg-surface border border-white/5 rounded-xl p-6 space-y-4">
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-text-muted font-medium uppercase tracking-wider">Identified Open Leaks</span>
-            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/10 text-amber-400 uppercase tracking-wide">Action Needed</span>
-          </div>
-          <div class="space-y-1">
-            <h3 class="text-3xl font-bold tracking-tight text-white">5 Faults</h3>
-            <p class="text-xs text-text-muted">Structural holes found across the pipeline</p>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-surface border border-white/5 rounded-xl p-6 space-y-4">
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-text-muted font-medium uppercase tracking-wider">Engineering Capacity</span>
-            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-success/10 text-success uppercase tracking-wide">Efficient</span>
-          </div>
-          <div class="space-y-1">
-            <h3 class="text-3xl font-bold tracking-tight text-white">24 Mins</h3>
-            <p class="text-xs text-text-muted">Total execution work required to patch system</p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Breakdown Split Section -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-        
-        <!-- Leak List Column (Spans 2) -->
-        <div class="lg:col-span-2 space-y-4">
-          <div class="flex items-center justify-between pb-2">
-            <h2 class="text-lg font-bold tracking-tight text-white">Critical Pipeline Faults</h2>
-            <span class="text-xs text-text-muted font-medium">Sorted by highest impact value</span>
-          </div>
-
-          <!-- Leak Row 1 -->
-          <div class="bg-surface hover:bg-surface-hover transition border border-white/5 rounded-xl p-5 flex items-center justify-between gap-4 cursor-pointer">
-            <div class="space-y-1.5 max-w-xl">
-              <div class="flex items-center gap-2.5">
-                <span class="px-2 py-0.5 text-[9px] font-bold bg-red-500/10 text-primary border border-red-500/20 uppercase tracking-wider rounded">Critical</span>
+Critical Pipeline Faults
+Sorted by highest impact value
+Critical
